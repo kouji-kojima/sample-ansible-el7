@@ -1,0 +1,15 @@
+# here we assign variables to particular groups
+
+#-----------
+# 変数設定(vars)
+#-----------
+
+#Proxy URL
+http_proxy: http://proxy.xxxxxxxxx.co.jp:port_no/
+
+#No Proxy
+no_proxys: xxxxx.co.jp,yyyy.co.jp
+
+#社内CA証明書 URL(Internal Certification Authority URL)
+ca_url: https://xxxxxxxx.co.jp/xxx.ca
+ca_sha256: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

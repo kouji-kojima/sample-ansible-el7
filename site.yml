@@ -1,0 +1,10 @@
+# master playbook
+
+- hosts: servers
+  sudo: yes
+  roles:
+  - init
+  - ca
+  post_tasks:
+  - name: 完了
+    debug: msg='Setup is completed.'

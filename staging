@@ -1,0 +1,8 @@
+# inventory file for staging environment
+
+[servers]
+HostName or IP
+HostName or IP
+
+[all:vars]
+ansible_ssh_user=ec2-user
