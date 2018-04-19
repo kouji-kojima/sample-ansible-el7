@@ -41,7 +41,7 @@
   lineinfile:
     dest:  /etc/rpm/macros
     state: present
-    regexp: "^#%_httpproxy*$"
+    regexp: "^*%_httpproxy*$"
     insertafter: EOF
     line: "%_httpproxy {{ proxy_host }}"
 
@@ -49,6 +49,6 @@
   lineinfile:
     dest:  /etc/rpm/macros
     state: present
-    regexp: "^#%_httpport*$"
+    regexp: "^*%_httpport*$"
     insertafter: EOF
     line: "%_httpport {{ proxy_port }}"
