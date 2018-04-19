@@ -60,7 +60,10 @@ Change group_vars
 #-----------
 
 #Proxy URL
-http_proxy: http://proxy.xxxxxxxxx.co.jp:port_no/
+proxy_host: proxy.xxxxxxxxx.co.jp
+proxy_port: port_no
+
+http_proxy: "http://{{ proxy_host }}:{{ proxy_port }}/"
 
 #No Proxy
 no_proxys: xxxxx.co.jp,yyyy.co.jp
