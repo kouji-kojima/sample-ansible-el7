@@ -37,7 +37,7 @@
     state: latest
     skip_broken: yes
 
-- name: set rpm proxy
+- name: set rpm proxy host
   lineinfile:
     dest:  /usr/lib/rpm/macros
     state: present
@@ -45,7 +45,7 @@
     insertafter: EOF
     line: "%_httpproxy {{ proxy_host }}"
 
-- name: set rpm proxy
+- name: set rpm proxy port
   lineinfile:
     dest:  /usr/lib/rpm/macros
     state: present
