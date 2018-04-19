@@ -3,9 +3,11 @@
 - name: set locale
   shell: localectl set-locale LANG=ja_JP.utf8
   when: ansible_env.LANG | default('') != 'ja_JP.utf8'
+
 - name: set timezone to Asia/Tokyo
   timezone:
     name: Asia/Tokyo
+
 - name: set proxy.sh
   template:
     force: yes
@@ -15,10 +17,12 @@
     group: root
     mode: 0644
   register: proxy_file
+
 - name: source proxy.sh
   shell: source /etc/profile.d/proxy.sh
   when:
   - proxy_file is changed
+
 - name: set yum proxy
   lineinfile:
     dest: /etc/yum.conf
@@ -26,8 +30,25 @@
     regexp: "^proxy=.*$"
     insertafter: EOF
     line: "proxy={{ http_proxy }}"
+
 - name: yum update
   yum:
     name: '*'
     state: latest
     skip_broken: yes
+
+- name: set rpm proxy
+  lineinfile:
+    dest:  /usr/lib/rpm/macros
+    state: present
+    regexp: "^#%_httpproxy*$"
+    insertafter: EOF
+    line: "%_httpproxy {{ proxy_host }}"
+
+- name: set rpm proxy
+  lineinfile:
+    dest:  /usr/lib/rpm/macros
+    state: present
+    regexp: "^#%_httpport*$"
+    insertafter: EOF
+    line: "%_httpport {{ proxy_port }}"
