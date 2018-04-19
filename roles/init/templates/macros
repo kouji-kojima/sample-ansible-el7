@@ -1,0 +1,2 @@
+%_httpproxy {{ proxy_host }}
+%_httpport {{ proxy_port }}

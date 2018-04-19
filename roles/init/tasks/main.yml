@@ -37,18 +37,11 @@
     state: latest
     skip_broken: yes
 
-- name: set rpm proxy host
-  lineinfile:
-    dest:  /etc/rpm/macros
-    state: present
-    regexp: "^*%_httpproxy*$"
-    insertafter: EOF
-    line: "%_httpproxy {{ proxy_host }}"
-
-- name: set rpm proxy port
-  lineinfile:
-    dest:  /etc/rpm/macros
-    state: present
-    regexp: "^*%_httpport*$"
-    insertafter: EOF
-    line: "%_httpport {{ proxy_port }}"
+- name: set rpm proxy
+  template:
+    force: yes
+    src: macros
+    dest: /etc/rpm/macros
+    owner: root
+    group: root
+    mode: 0644
