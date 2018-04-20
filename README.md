@@ -87,7 +87,7 @@ Comment out when there is no Internal CA
 
 ```ruby:change site.yml
 - hosts: servers
-  sudo: yes
+  become: yes
   roles:
   - init
 #  - ca

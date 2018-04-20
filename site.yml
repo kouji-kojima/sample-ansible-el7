@@ -1,7 +1,7 @@
 # master playbook
 
 - hosts: servers
-  sudo: yes
+  become: yes
   roles:
   - init
   - ca
