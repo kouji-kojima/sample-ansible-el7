@@ -46,6 +46,12 @@
     group: root
     mode: 0644
 
+- name: install wget
+  yum:
+    name: wget
+    state: latest
+    skip_broken: yes
+
 - name: set wget proxy
   lineinfile:
     dest: /etc/wgetrc
