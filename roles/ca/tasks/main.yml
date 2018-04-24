@@ -5,8 +5,10 @@
     url: "{{ ca_url }}"
     dest: /etc/pki/ca-trust/source/anchors
     checksum: "sha256:{{ ca_sha256 }}"
+    use_proxy: no
     force: yes
   register: downloaded_ca
+
 - name: extract ca
   shell: update-ca-trust extract
   when:
