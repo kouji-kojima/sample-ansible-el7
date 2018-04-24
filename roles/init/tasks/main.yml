@@ -57,9 +57,21 @@
     dest: /etc/wgetrc
     state: present
     regexp: "^{{ item }} = .*$"
-    insertafter: EOF
+    insertafter: "^#{{ item }}"
     line: "{{ item }} = {{ http_proxy }}"
   with_items:
     - http_proxy
     - https_proxy
     - ftp_proxy
+
+- name: install the latest version of git
+  yum:
+    name: git
+    state: latest
+
+- name: set git proxy
+  shell: "git config --global {{ item }} {{ http_proxy }}"
+  ignore_errors: yes
+  with_items:
+    - http.proxy
+    - https.proxy
