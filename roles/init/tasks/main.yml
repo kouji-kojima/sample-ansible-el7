@@ -4,6 +4,12 @@
   shell: localectl set-locale LANG=ja_JP.utf8
   when: ansible_env.LANG | default('') != 'ja_JP.utf8'
 
+- name: change keymap to Japanese 109
+  shell: localectl set-keymap jp-OADG109A
+
+- name: change x11 keymap to Japanese 109
+  shell: localectl set-x11-keymap jp-OADG109A
+
 - name: set timezone to Asia/Tokyo
   timezone:
     name: Asia/Tokyo
